@@ -5,8 +5,8 @@ import {createDetector} from '@tensorflow-models/face-landmarks-detection'
 import {FaceMesh} from '@mediapipe/face_mesh'
 
 const inputResolution = {
-  width: 1080,
-  height: 900,
+  width: 1720,
+  height: 720,
 };
 
 const videoConstraints = {
@@ -47,17 +47,18 @@ function Demo() {
 
       if (predictions.length > 0) {
         setLandmarks(predictions[0].scaledMesh);
-        // console.log(predictions[0].keypoints)
         const context = canvasRef.current.getContext('2d')
-
-        const x = predictions[0].keypoints[0].x
-        const y = predictions[0].keypoints[0].y
-        console.log(x,y)
+        // console.log(predictions[0])
         context.clearRect(0, 0, inputResolution.width, inputResolution.height);
-        context.beginPath();
-        context.arc(x,y,5, 0, 2 * Math.PI); 
-        context.fillStyle = 'red';
-        context.fill();
+        for(let keypoint in predictions[0].keypoints){
+          const x = predictions[0].keypoints[keypoint].x
+          const y = predictions[0].keypoints[keypoint].y
+          console.log(x,y)
+          context.beginPath();
+          context.arc(x,y,1, 0, 2 * Math.PI); 
+          context.fillStyle = 'red';
+          context.fill();
+        }
 
       }
     }
@@ -67,7 +68,7 @@ function Demo() {
   useEffect(() => {
     const interval = setInterval(() => {
       detectFace();
-    }, 10); 
+    }, 100); 
 
     return () => clearInterval(interval);
   }, [model]);
