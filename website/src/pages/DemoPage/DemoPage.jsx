@@ -15,7 +15,7 @@ const videoConstraints = {
   facingMode: "user",
 };
 
-function Demo() {
+function DemoPage() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -91,4 +91,4 @@ function Demo() {
   );
 };
 
-export default Demo;
+export default DemoPage;

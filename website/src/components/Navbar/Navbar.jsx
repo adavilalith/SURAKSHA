@@ -11,7 +11,7 @@ const Navbar = () => {
           <img src="./suraksha-name-and-logo.png" alt="" className="max-h-[50px] "/>
         </div>
         <div className="hidden md:flex space-x-8">
-          <Link to="/Demo"><a href="#source-code" className="text-gray-600 hover:text-gray-800">Demo</a></Link>
+          <Link to="/Demo"><a className="text-gray-600 hover:text-gray-800">Demo</a></Link>
           <a  className="text-gray-600 hover:text-gray-800">Features</a>
           <a href="https://github.com/adavilalith/SURAKSHA" className="text-gray-600 hover:text-gray-800">Source Code</a>
           <a href="#about" className="text-gray-600 hover:text-gray-800">About Us</a>
