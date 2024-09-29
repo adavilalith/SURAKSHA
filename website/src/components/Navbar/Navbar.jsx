@@ -25,10 +25,10 @@ const Navbar = () => {
 
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 py-2 space-y-2">
-          <a href="#features" className="block text-gray-600 hover:text-gray-800">Features</a>
-          <a href="#pricing" className="block text-gray-600 hover:text-gray-800">Pricing</a>
+        <Link to="/Demo"><a className="block text-gray-600 hover:text-gray-800">Demo</a></Link>
+          <a  className="block text-gray-600 hover:text-gray-800">Features</a>
+          <a href="https://github.com/adavilalith/SURAKSHA" className="block text-gray-600 hover:text-gray-800">Source Code</a>
           <a href="#about" className="block text-gray-600 hover:text-gray-800">About Us</a>
-          <a href="#contact" className="block text-gray-600 hover:text-gray-800">Contact</a>
         </div>
       </div>
     </nav>
