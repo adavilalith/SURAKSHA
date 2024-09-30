@@ -3,10 +3,10 @@ import Webcam from 'react-webcam';
 import * as tf from '@tensorflow/tfjs';
 import {createDetector} from '@tensorflow-models/face-landmarks-detection'
 import {FaceMesh} from '@mediapipe/face_mesh'
-
+import Navbar from '../../components/Navbar/Navbar';
 const inputResolution = {
-  width: 640,
-  height: 480,
+  width: 1280,
+  height: 720,
 };
 
 const videoConstraints = {
@@ -65,8 +65,10 @@ function DemoPage() {
         }
 
         context = canvasRef1.current.getContext('2d')
-        // console.log(predictions[0])
         context.clearRect(0, 0, inputResolution.width, inputResolution.height);
+        context.rect(0,0,inputResolution.width, inputResolution.height)
+        context.fillStyle = 'grey';
+        context.fill();
         for(let keypoint in predictions[0].keypoints){
           const x = predictions[0].keypoints[keypoint].x
           const y = predictions[0].keypoints[keypoint].y
@@ -99,27 +101,45 @@ function DemoPage() {
   }, [model]);
 
   return (
-    <div className='grid sm:grid-cols-3 grid-cols-1'>
-        <Webcam
-        ref={webcamRef}
-        videoConstraints={videoConstraints}
-        className='col-span-1 w-'
-        />
+    <div className='bg-gray-200'>
+    <Navbar></Navbar>
+    <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[10%]'>
+
+    <div className={`flex justify-center items-center max-w-[100vh] h-auto bg-black`}>
+          <Webcam
+          ref={webcamRef}
+          videoConstraints={videoConstraints}
+          className='col-span-1 bg-pink '
+          />
+        </div>
+
+      <canvas
+          className='col-span-1 max-w-[100vh] h-auto'
+          ref={canvasRef}
+          mirrored
+          />
+       
+
         <canvas
-        className='col-span-1'
-        ref={canvasRef}
-        mirrored
-        width={inputResolution.width}
-        height={inputResolution.height}
-        
-        />
-        <canvas
-        className='col-span-1'
+        className='col-span-1 max-w-[100vh] h-auto'
         ref={canvasRef1}
-        width={inputResolution.width}
-        height={inputResolution.height}
-        
         />
+        
+          
+        
+    </div>
+      <div className='grid sm:grid-cols-3 my-[5%] gap-10 justify-items-center align-items-center'>
+        <button onClick={""} className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_6px_20px_rgba(0,118,255,23%)] hover:bg-[rgba(0,118,255,0.9)] px-8 py-2 bg-[#0070f3] rounded-md text-white font-light transition duration-200 ease-linear">
+          Blink Detection
+        </button> 
+        <button onClick={""} className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_6px_20px_rgba(0,118,255,23%)] hover:bg-[rgba(0,118,255,0.9)] px-8 py-2 bg-[#0070f3] rounded-md text-white font-light transition duration-200 ease-linear">
+            Tilt Detection
+        </button> 
+        <button onClick={""} className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_6px_20px_rgba(0,118,255,23%)] hover:bg-[rgba(0,118,255,0.9)] px-8 py-2 bg-[#0070f3] rounded-md text-white font-light transition duration-200 ease-linear">
+            Rotate Detection
+        </button> 
+      </div>
+
     </div>
   );
 };
