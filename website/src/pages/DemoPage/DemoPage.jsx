@@ -16,6 +16,7 @@ const videoConstraints = {
 };
 
 function DemoPage() {
+
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const canvasRef1 = useRef(null);
@@ -103,7 +104,7 @@ function DemoPage() {
   return (
     <div className='bg-gray-200'>
     <Navbar></Navbar>
-    <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[10%]'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-[10%]'>
 
     <div className={`flex justify-center items-center max-w-[100vh] h-auto bg-black`}>
           <Webcam
@@ -112,20 +113,15 @@ function DemoPage() {
           className='col-span-1 bg-pink '
           />
         </div>
-
+      <div className='canvas-container w-full max-w-lg h-auto flex justify-center items-center overflow-hidden'>
       <canvas
-          className='col-span-1 max-w-[100vh] h-auto'
+      className='w-full h-auto'
           ref={canvasRef}
           mirrored
-          />
-       
-
-        <canvas
-        className='col-span-1 max-w-[100vh] h-auto'
-        ref={canvasRef1}
-        />
-        
-          
+          width={inputResolution.width}
+          height={inputResolution.height}
+          />  
+      </div>
         
     </div>
       <div className='grid sm:grid-cols-3 my-[5%] gap-10 justify-items-center align-items-center'>
