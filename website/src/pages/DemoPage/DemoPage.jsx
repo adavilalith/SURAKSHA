@@ -103,7 +103,7 @@ function DemoPage() {
         <Webcam
         ref={webcamRef}
         videoConstraints={videoConstraints}
-        className='col-span-1'
+        className='col-span-1 w-'
         />
         <canvas
         className='col-span-1'

@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="bg-transparent ">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="text-2xl font-bold text-gray-800">
-          <img src="./suraksha-name-and-logo.png" alt="" className="max-h-[50px] "/>
+          <img src="./static/images/suraksha-name-and-logo.png" alt="" className="max-h-[50px] "/>
         </div>
         <div className="hidden md:flex space-x-8">
           <Link to="/Demo"><a className="text-gray-600 hover:text-gray-800">Demo</a></Link>
