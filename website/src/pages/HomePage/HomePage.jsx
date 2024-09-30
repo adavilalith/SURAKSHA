@@ -1,6 +1,9 @@
 import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { useNavigate } from 'react-router-dom'
+import FeatureCard from '../../components/FeatureCard/FeatureCard'
+import Footer from '../../components/Footer/Footer'
+
 
 export default function HomePage() {
   const navigator = useNavigate()
@@ -8,7 +11,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="bg-blue-300 flex-row">
+      <div className=" flex-row bg-[url('./subtle-prism(1).png')] bg-cover">
         <Navbar/>
         <div className="sm:mx-[15vw] p-4 pt-[10vh] sm:grid sm:grid-cols-12 gap-4 pb-[50px]">
           <div className="  sm:col-span-12 sm:mt-[10vh] text-center" >
@@ -32,6 +35,12 @@ export default function HomePage() {
           </button>  
         </div>
         </div>
+        <div className='grid sm:grid-cols-3 grid-cols-1 justify-items-center my-[20px] sm:mx-[20%] mx-3  gap-11 ' >
+          <FeatureCard></FeatureCard>
+          <FeatureCard></FeatureCard>
+          <FeatureCard></FeatureCard>
+        </div>
+        <Footer></Footer>
     </>
   )
 }
