@@ -5,8 +5,8 @@ import {createDetector} from '@tensorflow-models/face-landmarks-detection'
 import {FaceMesh} from '@mediapipe/face_mesh'
 
 const inputResolution = {
-  width: 600,
-  height: 400,
+  width: 640,
+  height: 480,
 };
 
 const videoConstraints = {
@@ -51,6 +51,9 @@ function DemoPage() {
         let context = canvasRef.current.getContext('2d')
         // console.log(predictions[0])
         context.clearRect(0, 0, inputResolution.width, inputResolution.height);
+        context.rect(0,0,inputResolution.width, inputResolution.height)
+        context.fillStyle = 'black';
+        context.fill();
         for(let keypoint in predictions[0].keypoints){
           const x = predictions[0].keypoints[keypoint].x
           const y = predictions[0].keypoints[keypoint].y
@@ -69,7 +72,7 @@ function DemoPage() {
           const y = predictions[0].keypoints[keypoint].y
           console.log(x,y)
           context.beginPath();
-          context.arc(x,y,3, 0, 2 * Math.PI); 
+          context.arc(inputResolution.width-x,y,3, 0, 2 * Math.PI); 
           context.fillStyle = 'red';
           context.fill();
         }
@@ -105,6 +108,7 @@ function DemoPage() {
         <canvas
         className='col-span-1'
         ref={canvasRef}
+        mirrored
         width={inputResolution.width}
         height={inputResolution.height}
         
