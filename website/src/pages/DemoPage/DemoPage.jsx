@@ -59,7 +59,12 @@ function DemoPage() {
           context.fillStyle = 'red';
           context.fill();
         }
-
+      }
+      else{
+        setLandmarks([]);
+        const context = canvasRef.current.getContext('2d')
+        context.clearRect(0, 0, inputResolution.width, inputResolution.height);
+        console.log("no face")
       }
     }
 
