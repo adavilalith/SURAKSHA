@@ -5,7 +5,7 @@ import {createDetector} from '@tensorflow-models/face-landmarks-detection'
 import {FaceMesh} from '@mediapipe/face_mesh'
 
 const inputResolution = {
-  width: 1720,
+  width: 1280,
   height: 720,
 };
 
@@ -55,7 +55,7 @@ function DemoPage() {
           const y = predictions[0].keypoints[keypoint].y
           console.log(x,y)
           context.beginPath();
-          context.arc(x,y,1, 0, 2 * Math.PI); 
+          context.arc(x,y,3, 0, 2 * Math.PI); 
           context.fillStyle = 'red';
           context.fill();
         }
