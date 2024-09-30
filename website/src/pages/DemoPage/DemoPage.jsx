@@ -96,12 +96,11 @@ function DemoPage() {
   }, [model]);
 
   return (
-    <div className='grid grid-cols-3'>
+    <div className='grid sm:grid-cols-3 grid-cols-1'>
         <Webcam
         ref={webcamRef}
         videoConstraints={videoConstraints}
         className='col-span-1'
-        mirrored
         />
         <canvas
         className='col-span-1'
