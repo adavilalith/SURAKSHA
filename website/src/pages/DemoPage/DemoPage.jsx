@@ -5,8 +5,8 @@ import {createDetector} from '@tensorflow-models/face-landmarks-detection'
 import {FaceMesh} from '@mediapipe/face_mesh'
 
 const inputResolution = {
-  width: 1280,
-  height: 720,
+  width: 600,
+  height: 400,
 };
 
 const videoConstraints = {
@@ -18,6 +18,7 @@ const videoConstraints = {
 function DemoPage() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const canvasRef1 = useRef(null);
 
   const [loaded, setLoaded] = useState(false);
   const [model,setModel] = useState(null)
@@ -47,7 +48,20 @@ function DemoPage() {
 
       if (predictions.length > 0) {
         setLandmarks(predictions[0].scaledMesh);
-        const context = canvasRef.current.getContext('2d')
+        let context = canvasRef.current.getContext('2d')
+        // console.log(predictions[0])
+        context.clearRect(0, 0, inputResolution.width, inputResolution.height);
+        for(let keypoint in predictions[0].keypoints){
+          const x = predictions[0].keypoints[keypoint].x
+          const y = predictions[0].keypoints[keypoint].y
+          console.log(x,y)
+          context.beginPath();
+          context.arc(x,y,3, 0, 2 * Math.PI); 
+          context.fillStyle = 'red';
+          context.fill();
+        }
+
+        context = canvasRef1.current.getContext('2d')
         // console.log(predictions[0])
         context.clearRect(0, 0, inputResolution.width, inputResolution.height);
         for(let keypoint in predictions[0].keypoints){
@@ -62,8 +76,11 @@ function DemoPage() {
       }
       else{
         setLandmarks([]);
-        const context = canvasRef.current.getContext('2d')
+        let context = canvasRef.current.getContext('2d')
         context.clearRect(0, 0, inputResolution.width, inputResolution.height);
+        context = canvasRef1.current.getContext('2d')
+        context.clearRect(0, 0, inputResolution.width, inputResolution.height);
+        
         console.log("no face")
       }
     }
@@ -79,19 +96,27 @@ function DemoPage() {
   }, [model]);
 
   return (
-    <div>
+    <div className='grid grid-cols-3'>
         <Webcam
         ref={webcamRef}
-        style={{ position: "absolute" }}
         videoConstraints={videoConstraints}
-      />
-      <canvas
+        className='col-span-1'
+        mirrored
+        />
+        <canvas
+        className='col-span-1'
         ref={canvasRef}
         width={inputResolution.width}
         height={inputResolution.height}
-        style={{ position: "absolute" }}
         
-      />
+        />
+        <canvas
+        className='col-span-1'
+        ref={canvasRef1}
+        width={inputResolution.width}
+        height={inputResolution.height}
+        
+        />
     </div>
   );
 };

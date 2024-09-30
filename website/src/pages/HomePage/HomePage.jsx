@@ -1,14 +1,18 @@
 import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
+import { useNavigate } from 'react-router-dom'
 
 export default function HomePage() {
+  const navigator = useNavigate()
+  
+
   return (
     <>
       <div className="bg-blue-300 flex-row">
         <Navbar/>
-        <div className="sm:mx-[15vw] p-4 pt-[10vh] sm:grid sm:grid-cols-12 gap-4">
-          <div className=" min-h-[100px] sm:col-span-5 sm:mt-[10vh]">
-              <img src="./suraksha-name-only.png" alt="SURAKSHA" className="max-h-[60px]"/>
+        <div className="sm:mx-[15vw] p-4 pt-[10vh] sm:grid sm:grid-cols-12 gap-4 pb-[50px]">
+          <div className="  sm:col-span-12 sm:mt-[10vh] text-center" >
+              <img src="./suraksha-name-only.png" alt="SURAKSHA" className="max-h-[60px] m-auto"/>
               <h2 className='text-2xl font-bold text-gray-800 my-6'>
                 Secure Your Identity Effortlessly
               </h2>
@@ -20,9 +24,14 @@ export default function HomePage() {
               Fast. Reliable. Privacy-Focused.
               </p>
           </div>
-          <div className="bg-red-200 min-h-[100px] sm:h-[50vh] sm:col-span-7"></div>
+          
         </div>
-      </div>
+        <div className='flex justify-center pb-[100px]'>
+          <button onClick={()=>navigator('/Demo')} className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_6px_20px_rgba(0,118,255,23%)] hover:bg-[rgba(0,118,255,0.9)] px-8 py-2 bg-[#0070f3] rounded-md text-white font-light transition duration-200 ease-linear">
+            Try the Demo
+          </button>  
+        </div>
+        </div>
     </>
   )
 }
