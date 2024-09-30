@@ -118,8 +118,8 @@ function DemoPage() {
       className='w-full h-auto'
           ref={canvasRef}
           mirrored
-          width={inputResolution.width}
-          height={inputResolution.height}
+          width={Number(inputResolution.width/2)}
+          height={inputResolution.height/2}
           />  
       </div>
         
