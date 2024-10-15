@@ -11,7 +11,7 @@ const Navbar = () => {
           <img src="/static/images/suraksha-name-and-logo.png" alt="" className="max-h-[50px] "/>
         </div>
         <div className="hidden md:flex space-x-8">
-          <Link to="/Demo"><a className="text-gray-600 hover:text-gray-800">Demo</a></Link>
+          <Link to="/Demo" className="text-gray-600 hover:text-gray-800">Demo</Link>
           <a  className="text-gray-600 hover:text-gray-800">Features</a>
           <a href="https://github.com/adavilalith/SURAKSHA" className="text-gray-600 hover:text-gray-800">Source Code</a>
           <a href="#about" className="text-gray-600 hover:text-gray-800">About Us</a>
@@ -25,7 +25,7 @@ const Navbar = () => {
 
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 py-2 space-y-2">
-        <Link to="/Demo"><a className="block text-gray-600 hover:text-gray-800">Demo</a></Link>
+        <Link to="/Demo" className="block text-gray-600 hover:text-gray-800">Demo</Link>
           <a  className="block text-gray-600 hover:text-gray-800">Features</a>
           <a href="https://github.com/adavilalith/SURAKSHA" className="block text-gray-600 hover:text-gray-800">Source Code</a>
           <a href="#about" className="block text-gray-600 hover:text-gray-800">About Us</a>
